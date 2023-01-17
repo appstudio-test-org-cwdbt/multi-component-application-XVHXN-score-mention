@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: devfile-go-sample-multi-component-example-main-lavo
+  namespace: e2e-demo-mhts
+spec:
+  replicas: 1
+  selector: {}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: quay.io/codewindbtle/test-images:144fcff8bfa441a9ad244c8a21017682
+        name: container-image
+        resources: {}
+status: {}
