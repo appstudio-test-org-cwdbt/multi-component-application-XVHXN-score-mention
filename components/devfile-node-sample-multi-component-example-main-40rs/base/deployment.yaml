@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: devfile-node-sample-multi-component-example-main-40rs
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: devfile-node-sample-multi-component-example-main-40rs
+    app.kubernetes.io/part-of: multi-component-application
+  name: devfile-node-sample-multi-component-example-main-40rs
+  namespace: e2e-demo-mhts
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: devfile-node-sample-multi-component-example-main-40rs
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: devfile-node-sample-multi-component-example-main-40rs
+    spec:
+      containers:
+      - image: quay.io/codewindbtle/test-images:fc120ca9c1034e9280df32b5a943187c
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3001
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        name: container-image
+        ports:
+        - containerPort: 3001
+        readinessProbe:
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          tcpSocket:
+            port: 3001
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi
+status: {}
