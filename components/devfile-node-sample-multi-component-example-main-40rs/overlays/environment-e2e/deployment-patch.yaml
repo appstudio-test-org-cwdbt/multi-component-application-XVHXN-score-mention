@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: devfile-node-sample-multi-component-example-main-40rs
+  namespace: e2e-demo-mhts
+spec:
+  replicas: 1
+  selector: {}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: quay.io/codewindbtle/test-images@sha256:17de21a77b09f24ad6c7c98ee13096a9fe9ff2733504d7536a1cab00857478c1
+        name: container-image
+        resources: {}
+status: {}
